@@ -14,6 +14,8 @@ li {
   color: gray;
   list-style: none;
   line-height: 20px;
+  text-align: left;
+  margin-left: 25px;
 }
 .appContainer {
   border: 2px solid gray;
@@ -47,6 +49,8 @@ li {
 }
 #weather {
   font-size: 20px;
+  text-align: left;
+  margin-left: 0;
 }
 #weather::first-letter {
   text-transform: capitalize;
