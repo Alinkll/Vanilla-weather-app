@@ -64,11 +64,19 @@ li {
   color: black;
 }
 #temperature {
+  color: black;
   font-size: 70px;
   line-height: 1;
   font-weight: 400;
 }
-#autor {
+#author {
   position: relative;
   top: -25px;
+}
+.temperature-day-min {
+  opacity: 0.5;
+}
+.image {
+  display: block;
+  margin: 0 auto;
 }
