@@ -37,7 +37,6 @@ function forecastDay(dailyStamp) {
 
 function displayForecast(response) {
   let forcast = response.data.daily;
-  console.log(response.data);
   let forecastElement = document.querySelector(".container-week");
   forecastElement.innerHTML = "";
   let forecastHTML = `<div class="row">`;
@@ -71,29 +70,17 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-//displayForecast();
-//console.log(displayForecast);
-
-//part 2
 
 function showTemperature(response) {
-  console.log(response.data);
-
   let temperatureCelsius = Math.round(response.data.main.temp);
-  console.log("temperature");
-  console.log(temperatureCelsius);
   let currentTemp = document.querySelector("#temperature");
   currentTemp.innerHTML = temperatureCelsius;
 
   let humidity = Math.round(response.data.main.humidity);
-  console.log("humidity");
-  console.log(humidity);
   let currentHumidity = document.querySelector("#humidity");
   currentHumidity.innerHTML = humidity;
 
   let wind = Math.round(response.data.wind.speed);
-  console.log("wind");
-  console.log(wind);
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = wind;
 
@@ -106,15 +93,11 @@ function showTemperature(response) {
   currentCity.innerHTML = city;
 
   let timeDate = response.data.dt;
-  console.log("date");
-  console.log(new Date(timeDate * 1000));
 
   let time = document.querySelector("#currentTime");
   time.innerHTML = `Last updated: ${formatDate(timeDate * 1000)}`;
-  console.log(formatDate(timeDate * 1000));
 
   let iconUrl = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
-  console.log(iconUrl);
   let icon = document.querySelector("#mainIcon");
   icon.setAttribute("src", iconUrl);
   icon.setAttribute("alt", response.data.weather[0].main);
@@ -130,7 +113,6 @@ function search(city) {
 function city(event) {
   event.preventDefault();
   let cityName = document.querySelector("#cityName");
-  console.log(cityName.value);
 
   search(cityName.value);
 }
@@ -139,18 +121,11 @@ let form = document.querySelector("#search-form");
 
 form.addEventListener("submit", city);
 
-//part 3
-
 function currentLocation(position) {
-  //let lat = position.data.coord.lat;
-  //let lon = position.data.coord.lon;
   let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
-
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.lat}&lon=${position.lon}&appid=${apiKey}&units=metric`;
 
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
 search("Lviv");
-// call geolocation city name
-//navigator.geolocation.getCurrentPosition(currentLocation);
